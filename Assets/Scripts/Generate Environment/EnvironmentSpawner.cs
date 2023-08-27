@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Generate_Environment
 {
-    public class Spawner : MonoBehaviour
+    public class EnvironmentSpawner : MonoBehaviour
     {
         [SerializeField] private TownRoad[] townRoads;
         [SerializeField] private CrossroadsTurnRoad[] crossroadsTurnRoads;
@@ -23,22 +23,22 @@ namespace Generate_Environment
 
         private Vector3 _pointToSpawnNewRoad;
 
-        private void Awake()
+        private void Start()
         {
             _pointToSpawnNewRoad = Vector3.zero;
         
-            _roadsPool = new CustomPool<Road>(townRoads, 20);
-            _crossroadPool = new CustomPool<Crossroad>(crossroads, 20);
-            _crossroadsTurnRoadsPool = new CustomPool<Road>(crossroadsTurnRoads, 20);
-            _townEnvironmentsPool = new CustomPool<Environment>(townEnvironments, 20);
-            _crossroadTownEnvironmentsPool = new CustomPool<Environment>(crossroadTownEnvironments, 20);
+            _roadsPool = new CustomPool<Road>(townRoads, 10);
+            _crossroadPool = new CustomPool<Crossroad>(crossroads, 10);
+            _crossroadsTurnRoadsPool = new CustomPool<Road>(crossroadsTurnRoads, 10);
+            _townEnvironmentsPool = new CustomPool<Environment>(townEnvironments, 10);
+            _crossroadTownEnvironmentsPool = new CustomPool<Environment>(crossroadTownEnvironments, 10);
 
             for (int i = 0; i < 8; i++)
             {
                 GenerateNewRoadPart();
             }
         }
-
+ 
         private void GenerateRoad()
         {
             var newRoad = _roadsPool.Get();
@@ -52,7 +52,6 @@ namespace Generate_Environment
         private void GenerateCrossroad()
         {
             var newCrossroad = _crossroadPool.Get();
-            newCrossroad._spawner = this;
             newCrossroad.CreateTurns(_crossroadsTurnRoadsPool);
             newCrossroad.CreateEnvironment(_crossroadTownEnvironmentsPool);
             newCrossroad.transform.position = _pointToSpawnNewRoad;
