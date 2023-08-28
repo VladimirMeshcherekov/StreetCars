@@ -16,8 +16,7 @@ namespace Components
        [Inject]
         private void Construct(EnvironmentSpawner environmentSpawner)
         {
-            print(123);
-           _environmentSpawner = environmentSpawner;
+            _environmentSpawner = environmentSpawner;
         }
 
         public void CreateTurns(CustomPool<Road> roadPool)

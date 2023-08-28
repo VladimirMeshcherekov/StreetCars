@@ -15,10 +15,10 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @PlayerInput : IInputActionCollection2, IDisposable
+public partial class @PlayerStandaloneInput : IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @PlayerInput()
+    public @PlayerStandaloneInput()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Player"",
@@ -197,8 +197,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PlayerGas;
     public struct PlayerActions
     {
-        private @PlayerInput m_Wrapper;
-        public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        private @PlayerStandaloneInput m_Wrapper;
+        public PlayerActions(@PlayerStandaloneInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @PlayerMoveDirection => m_Wrapper.m_Player_PlayerMoveDirection;
         public InputAction @PlayerGas => m_Wrapper.m_Player_PlayerGas;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
