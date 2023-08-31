@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Components;
 using CustomPool;
+using NPC;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Generate_Environment
 {
@@ -12,7 +14,8 @@ namespace Generate_Environment
         [SerializeField] private Crossroad[] crossroads;
         [SerializeField] private TownEnvironment[] townEnvironments;
         [SerializeField] private CrossroadTownEnvironment[] crossroadTownEnvironments;
-    
+        [SerializeField] private NpcPoolController npcPoolController;
+        
         private CustomPool<Road> _crossroadsTurnRoadsPool;
         private CustomPool<Road> _roadsPool;
         private CustomPool<Crossroad> _crossroadPool;
@@ -44,6 +47,7 @@ namespace Generate_Environment
             var newRoad = _roadsPool.Get();
             newRoad.ResetObject();
             newRoad.FillEnvironment(_townEnvironmentsPool);
+            newRoad.FillNpcCars(npcPoolController);
             newRoad.transform.position = _pointToSpawnNewRoad;
             _pointToSpawnNewRoad = newRoad.roadEndPoint.position;
             _inSceneRoadQueue.Add(newRoad);

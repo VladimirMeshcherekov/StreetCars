@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NPC.Car
 {
-    public class CarMove : MonoBehaviour
+    public class CarMove : Vehicle
     {
         [SerializeField] private float viewDistance;
         [SerializeField] private float speed;

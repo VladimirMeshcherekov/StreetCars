@@ -478,5 +478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cab003569c916241baa812c7edbeaf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewDistance: 0
-  speed: 0
+  viewDistance: 10
+  speed: 2
+  showViewRay: 0

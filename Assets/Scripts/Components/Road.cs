@@ -1,14 +1,16 @@
 using CustomPool;
+using NPC;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Components
 {
    public class Road : MonoBehaviour
    {
       [SerializeField] private Transform[] environmentPlaceHolder;
+      [SerializeField] private Transform[] npcCarsPlaceHolder;
       public Transform roadEndPoint;
-
-      private CustomPool<Environment> _environmentPool;
+      
       public void ResetObject()
       {
          transform.SetParent(null);
@@ -18,14 +20,23 @@ namespace Components
 
       public void FillEnvironment(CustomPool<Environment> environmentPool)
       {
-         _environmentPool = environmentPool;
-         
-         for (int i = 0; i < environmentPlaceHolder.Length; i++)
+         foreach (var spawnPoint in environmentPlaceHolder)
          {
             var newEnvironment = environmentPool.Get();
-            newEnvironment.transform.SetParent(environmentPlaceHolder[i]);
-            newEnvironment.transform.position = environmentPlaceHolder[i].position;
-            newEnvironment.transform.rotation = environmentPlaceHolder[i].rotation;
+            newEnvironment.transform.SetParent(spawnPoint);
+            newEnvironment.transform.position = spawnPoint.position;
+            newEnvironment.transform.rotation = spawnPoint.rotation;
+         }
+      }
+
+      public void FillNpcCars(NpcPoolController npcPoolController)
+      {
+         foreach (var spawnPoint in npcCarsPlaceHolder)
+         {
+            var newCar = npcPoolController.TyrGetVehicle();
+            newCar.transform.position = spawnPoint.position;
+            newCar.transform.rotation = spawnPoint.rotation;
+            newCar.transform.SetParent(this.transform);
          }
       }
    }
