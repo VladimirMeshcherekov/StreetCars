@@ -10,7 +10,7 @@ namespace Installers
 {
     public class PlayerInstaller : MonoInstaller
     {
-        [SerializeField] private EnvironmentSpawner environmentSpawner;
+        [FormerlySerializedAs("environmentSpawner")] [SerializeField] private LevelGenerator levelGenerator;
         [SerializeField] private Joystick playerJoystick;
         [SerializeField] private NpcPoolController npcPool;
         private EventBus _eventBus;
@@ -36,7 +36,7 @@ namespace Installers
 
         private void InstallLevelGeneration()
         {
-            Container.BindInstance(environmentSpawner).AsSingle();
+            Container.BindInstance(levelGenerator).AsSingle();
             Container.Bind<NpcPoolController>().FromInstance(npcPool).AsSingle().NonLazy();
         }
 

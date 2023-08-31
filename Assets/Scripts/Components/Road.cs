@@ -1,4 +1,5 @@
 using CustomPool;
+using Generate_Environment;
 using NPC;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -18,11 +19,11 @@ namespace Components
          transform.rotation = Quaternion.identity;
       }
 
-      public void FillEnvironment(CustomPool<Environment> environmentPool)
+      public void FillEnvironment(TownEnvironmentPoolController townEnvironmentPool)
       {
          foreach (var spawnPoint in environmentPlaceHolder)
          {
-            var newEnvironment = environmentPool.Get();
+            var newEnvironment = townEnvironmentPool.GetTownEnvironment();
             newEnvironment.transform.SetParent(spawnPoint);
             newEnvironment.transform.position = spawnPoint.position;
             newEnvironment.transform.rotation = spawnPoint.rotation;

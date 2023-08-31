@@ -1,4 +1,3 @@
-using CustomPool;
 using Generate_Environment;
 using UnityEngine;
 using Zenject;
@@ -10,21 +9,19 @@ namespace Components
         public Transform crossroadEndPoint;
         [SerializeField] private Transform[] turnsDirection;
         [SerializeField] private Transform[] environmentPlaceholder;
-        private CustomPool<Road> _roadPool;
-        private EnvironmentSpawner _environmentSpawner;
+        private LevelGenerator _levelGenerator;
 
        [Inject]
-        private void Construct(EnvironmentSpawner environmentSpawner)
+        private void Construct(LevelGenerator levelGenerator)
         {
-            _environmentSpawner = environmentSpawner;
+            _levelGenerator = levelGenerator;
         }
 
-        public void CreateTurns(CustomPool<Road> roadPool)
+        public void CreateTurns(RoadsPoolController townEnvironmentPoolController)
         {
-            _roadPool = roadPool;
             for (int i = 0; i < turnsDirection.Length; i++)
             {
-                var newRoad = _roadPool.Get();
+                var newRoad = townEnvironmentPoolController.GetCrossroadsTurnRoad();
                 newRoad.ResetObject();
                 newRoad.transform.SetParent(this.transform);
                 newRoad.transform.localPosition = turnsDirection[i].localPosition;
@@ -32,11 +29,11 @@ namespace Components
             }
         }
 
-        public void CreateEnvironment(CustomPool<Environment> pool)
+        public void CreateEnvironment(TownEnvironmentPoolController townEnvironmentPoolController)
         {
             for (int i = 0; i < environmentPlaceholder.Length; i++)
             {
-                var env = pool.Get();
+                var env = townEnvironmentPoolController.GetCrossroadTownEnvironments();
                 env.transform.SetParent(this.transform);
                 env.transform.position = environmentPlaceholder[i].transform.position;
                 env.transform.rotation = environmentPlaceholder[i].transform.rotation;
@@ -47,8 +44,8 @@ namespace Components
         {
             if (other.gameObject.TryGetComponent(out Player player))
             {
-                _environmentSpawner.GenerateNewRoadPart();
-                _environmentSpawner.DeleteFirstRoadPart();
+                _levelGenerator.GenerateNewRoadPart();
+                _levelGenerator.DeleteFirstRoadPart();
             }
         }
     }

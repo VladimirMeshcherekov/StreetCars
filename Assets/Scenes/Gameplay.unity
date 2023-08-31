@@ -233,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &391029271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5454587e2607dc4fb4e3b267ca0361d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environmentSpawner: {fileID: 994245048}
+  levelGenerator: {fileID: 994245048}
   playerJoystick: {fileID: 2013170411}
   npcPool: {fileID: 391029271}
 --- !u!1 &811893532
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 994245049}
   - component: {fileID: 994245048}
   m_Layer: 0
-  m_Name: EnvironmentSpawner
+  m_Name: LevelGeneration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,27 +538,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943763f52d40e7743b61f900780fcabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  townRoads:
-  - {fileID: 4615369954108566026, guid: 75a45a48cc5aa2043b3a6d03b0737fbe, type: 3}
-  - {fileID: 761752744732961923, guid: 1834c1b08518d694c8ce2976a1ab0a37, type: 3}
-  - {fileID: 7514464035760087639, guid: 17017acebf4cf52498c2d5a2e44eb7f9, type: 3}
-  crossroadsTurnRoads:
-  - {fileID: 5283290176117052884, guid: 0e98380a65c9ac34385463c100e4d413, type: 3}
-  crossroads:
-  - {fileID: 9051547605803143475, guid: 39286f24560a6b84fb5b1e562781f97d, type: 3}
-  - {fileID: 8434829031550383225, guid: b068d5dcd1dbe0143806909042c7300a, type: 3}
-  - {fileID: 7575839029961917661, guid: 05971281afa35234d8e47f77e4259774, type: 3}
-  townEnvironments:
-  - {fileID: 5075783135272104364, guid: c71d5614f350eee4682adbf7a9ef7c0b, type: 3}
-  - {fileID: 8487647565085225999, guid: 04de7f9e4585bd94d9fa766c1eaee9d8, type: 3}
-  - {fileID: 6014405278132891955, guid: 6b9a1131a9a787f4791070816d84e309, type: 3}
-  - {fileID: 5075783135272104364, guid: c71d5614f350eee4682adbf7a9ef7c0b, type: 3}
-  - {fileID: 1250440031187717057, guid: c7a4a21830a75cf4c832d11e508c4431, type: 3}
-  crossroadTownEnvironments:
-  - {fileID: 3401258550143653531, guid: dee6fb0cadb6e9646bd1c63d101458d2, type: 3}
-  - {fileID: 1246500204936271140, guid: 16dc9b4997ed60143a0f07cf2a0f26be, type: 3}
-  - {fileID: 5632421065560347045, guid: a7fc8a407fb91b54db44cc1fb8f0c789, type: 3}
-  npcPoolController: {fileID: 391029271}
+  townEnvironmentPoolController:
+    townEnvironments:
+    - {fileID: 8487647565085225999, guid: 04de7f9e4585bd94d9fa766c1eaee9d8, type: 3}
+    - {fileID: 6755170230070691675, guid: f6bcfce41c6507f47a7057aec333035c, type: 3}
+    - {fileID: 5075783135272104364, guid: c71d5614f350eee4682adbf7a9ef7c0b, type: 3}
+    - {fileID: 6014405278132891955, guid: 6b9a1131a9a787f4791070816d84e309, type: 3}
+    - {fileID: 1250440031187717057, guid: c7a4a21830a75cf4c832d11e508c4431, type: 3}
+    crossroadTownEnvironments:
+    - {fileID: 3401258550143653531, guid: dee6fb0cadb6e9646bd1c63d101458d2, type: 3}
+    - {fileID: 1246500204936271140, guid: 16dc9b4997ed60143a0f07cf2a0f26be, type: 3}
+    - {fileID: 5632421065560347045, guid: a7fc8a407fb91b54db44cc1fb8f0c789, type: 3}
+    poolCapacityPerObject: 10
+  roadsPoolController:
+    townRoads:
+    - {fileID: 4615369954108566026, guid: 75a45a48cc5aa2043b3a6d03b0737fbe, type: 3}
+    - {fileID: 761752744732961923, guid: 1834c1b08518d694c8ce2976a1ab0a37, type: 3}
+    crossroadsTurnRoads:
+    - {fileID: 5283290176117052884, guid: 0e98380a65c9ac34385463c100e4d413, type: 3}
+    crossroads:
+    - {fileID: 9051547605803143475, guid: 39286f24560a6b84fb5b1e562781f97d, type: 3}
+    - {fileID: 8434829031550383225, guid: b068d5dcd1dbe0143806909042c7300a, type: 3}
+    - {fileID: 7575839029961917661, guid: 05971281afa35234d8e47f77e4259774, type: 3}
+    poolCapacityPerObject: 10
+  roadPartToSpawnInStart: 20
 --- !u!4 &994245049
 Transform:
   m_ObjectHideFlags: 0
