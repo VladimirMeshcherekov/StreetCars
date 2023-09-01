@@ -5,7 +5,6 @@ namespace Player.Input
 {
     public class PlayerMove
     {
-        private StandalonePlayerInput _input;
         private readonly WheelVehicle _vehicleControl;
         private Vector2 _moveDirection;
 

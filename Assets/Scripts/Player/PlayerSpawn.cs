@@ -28,7 +28,7 @@ namespace Player
 
         private void SpawnPlayer()
         {
-           var spawnedVehicle = Instantiate(vehicle, spawnPlayerPosition.position,  Quaternion.Euler(0, 90, 0));
+            var spawnedVehicle = Instantiate(vehicle, spawnPlayerPosition.position, Quaternion.Euler(0, 90, 0));
             _playerMove = new PlayerMove(spawnedVehicle, _eventBus);
             followCamera.Follow = spawnedVehicle.transform;
             followCamera.LookAt = spawnedVehicle.transform;

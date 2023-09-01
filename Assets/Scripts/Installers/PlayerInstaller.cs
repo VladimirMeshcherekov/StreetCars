@@ -10,7 +10,7 @@ namespace Installers
 {
     public class PlayerInstaller : MonoInstaller
     {
-        [FormerlySerializedAs("environmentSpawner")] [SerializeField] private LevelGenerator levelGenerator;
+        [SerializeField] private LevelGenerator levelGenerator;
         [SerializeField] private Joystick playerJoystick;
         [SerializeField] private NpcPoolController npcPool;
         private EventBus _eventBus;

@@ -1,10 +1,11 @@
 using DG.Tweening;
 using Player.Input;
+using Player.Interfaces;
 using UnityEngine;
 
 namespace NPC.Car
 {
-    public class CarMove : Vehicle
+    public class CarMove : Vehicle, IDamagePlayer
     {
         [SerializeField] private float viewDistance;
         [SerializeField] private float speed;

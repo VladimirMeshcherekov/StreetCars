@@ -4,6 +4,5 @@ namespace Components
 {
     public class Player : MonoBehaviour
     {
-        
     }
 }
