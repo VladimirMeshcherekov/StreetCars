@@ -8,27 +8,32 @@ namespace Player
     [RequireComponent(typeof(WheelVehicle))]
     public class PlayerDamage : MonoBehaviour
     {
-        [SerializeField] private int toughness;
+        [SerializeField] private int maxPlayerHealth;
+        private int _currentPlayerHealth;
         private WheelVehicle _vehicle;
         private EventBus _eventBus;
 
         [Inject]
-        void Construct(EventBus eventBus)
+        private void Construct(EventBus eventBus)
         {
             _eventBus = eventBus;
         }
 
         private void Start()
         {
+            _currentPlayerHealth = maxPlayerHealth;
+            _eventBus.Invoke(new PlayerHealthChangedSignal( maxPlayerHealth, _currentPlayerHealth));
             _vehicle = GetComponent<WheelVehicle>();
+
+            
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out IDamagePlayer npcCar))
             {
-                toughness -= (int)_vehicle.Speed;
-                print(toughness);
+                _currentPlayerHealth -= (int)_vehicle.Speed;
+                _eventBus.Invoke(new PlayerHealthChangedSignal( maxPlayerHealth, _currentPlayerHealth));
             }
         }
     }

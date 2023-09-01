@@ -1,9 +1,7 @@
 using Generate_Environment;
-using NPC;
 using Player.Input;
 using SimpleInputNamespace;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Installers
@@ -12,7 +10,6 @@ namespace Installers
     {
         [SerializeField] private LevelGenerator levelGenerator;
         [SerializeField] private Joystick playerJoystick;
-        [SerializeField] private NpcPoolController npcPool;
         private EventBus _eventBus;
 
         public override void InstallBindings()
@@ -26,6 +23,7 @@ namespace Installers
         {
             _eventBus = new EventBus();
             Container.BindInstance(_eventBus).AsSingle();
+            //Container.QueueForInject(_eventBus);
         }
 
         private void InstallInput()
@@ -37,7 +35,6 @@ namespace Installers
         private void InstallLevelGeneration()
         {
             Container.BindInstance(levelGenerator).AsSingle();
-            Container.Bind<NpcPoolController>().FromInstance(npcPool).AsSingle().NonLazy();
         }
 
         private void InstallStandaloneInput()
