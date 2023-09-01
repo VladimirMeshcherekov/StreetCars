@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Player.Input;
 using UnityEngine;
 
 namespace NPC.Car
@@ -16,7 +17,7 @@ namespace NPC.Car
 
             if (Physics.Raycast(transform.position + Vector3.up, transform.TransformDirection(Vector3.right), out var hit, viewDistance))
             {
-                if (hit.collider.gameObject.TryGetComponent(out CarMove carMove))
+                if (hit.collider.gameObject.TryGetComponent(out CarMove carMove) || hit.collider.gameObject.TryGetComponent(out Components.Player player ))
                 {
                     _isAbleToMove = false;
                 }
