@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Components;
+using NPC;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Generate_Environment
 {
@@ -8,6 +10,7 @@ namespace Generate_Environment
     {
         [SerializeField] private TownEnvironmentPoolController townEnvironmentPoolController;
         [SerializeField] private RoadsPoolController roadsPoolController;
+        [SerializeField] private NpcPoolController npcPoolController;
         [Space] 
         [SerializeField] private int roadPartToSpawnInStart;
         
@@ -18,8 +21,10 @@ namespace Generate_Environment
         private void Start()
         {
             _pointToSpawnNewRoad = Vector3.zero;
+            
             townEnvironmentPoolController.Init();
             roadsPoolController.Init();
+            npcPoolController.Init();
 
             for (var i = 0; i < roadPartToSpawnInStart; i++)
             {
@@ -32,7 +37,7 @@ namespace Generate_Environment
             var newRoad = roadsPoolController.GetRoad();
             newRoad.ResetObject();
             newRoad.FillEnvironment(townEnvironmentPoolController);
-            //newRoad.FillNpcCars(npcPoolController);
+            newRoad.FillNpcCars(npcPoolController);
             newRoad.transform.position = _pointToSpawnNewRoad;
             _pointToSpawnNewRoad = newRoad.roadEndPoint.position;
             _inSceneRoadQueue.Add(newRoad);

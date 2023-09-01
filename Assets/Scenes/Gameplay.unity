@@ -217,54 +217,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &391029270
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 391029272}
-  - component: {fileID: 391029271}
-  m_Layer: 0
-  m_Name: NPCspawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &391029271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391029270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb916686154d4783b7947f502f1ab8df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vehiclesTypes:
-  - {fileID: 8899972433198632661, guid: da91239bad3203d4a82bf8254ad33c84, type: 3}
-  - {fileID: 3550901721658489083, guid: 1414f334033d5a14b90367414fdd90c4, type: 3}
-  poolCapacity: 15
---- !u!4 &391029272
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391029270}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 126.9866, y: -96.779205, z: -61.50257}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &609629633
 GameObject:
   m_ObjectHideFlags: 3
@@ -440,7 +392,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelGenerator: {fileID: 994245048}
   playerJoystick: {fileID: 2013170411}
-  npcPool: {fileID: 391029271}
+  npcPool:
+    vehiclesTypes: []
+    poolCapacity: 0
 --- !u!1 &811893532
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +515,11 @@ MonoBehaviour:
     - {fileID: 8434829031550383225, guid: b068d5dcd1dbe0143806909042c7300a, type: 3}
     - {fileID: 7575839029961917661, guid: 05971281afa35234d8e47f77e4259774, type: 3}
     poolCapacityPerObject: 10
+  npcPoolController:
+    vehiclesTypes:
+    - {fileID: 8899972433198632661, guid: da91239bad3203d4a82bf8254ad33c84, type: 3}
+    - {fileID: 3550901721658489083, guid: 1414f334033d5a14b90367414fdd90c4, type: 3}
+    poolCapacity: 10
   roadPartToSpawnInStart: 20
 --- !u!4 &994245049
 Transform:

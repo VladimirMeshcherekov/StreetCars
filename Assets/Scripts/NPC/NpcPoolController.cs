@@ -1,22 +1,24 @@
-﻿using CustomPool;
+﻿using System;
+using CustomPool;
 using NPC.Car;
 using UnityEngine;
 
 namespace NPC
 {
-    public class NpcPoolController : MonoBehaviour
+    [Serializable]
+    public class NpcPoolController
     {
         [SerializeField] private Vehicle[] vehiclesTypes;
         [SerializeField] private int poolCapacity;
-        private CustomPool<Vehicle> _pool;
-        private void Start()
+        private CustomPool<Vehicle> _vehiclePool;
+        public void Init()
         {
-            _pool = new CustomPool<Vehicle>(vehiclesTypes, poolCapacity);
+            _vehiclePool = new CustomPool<Vehicle>(vehiclesTypes, poolCapacity);
         }
 
         public Vehicle TyrGetVehicle()
         {
-            return _pool.Get();
+            return _vehiclePool.Get();
         }
     }
 }
