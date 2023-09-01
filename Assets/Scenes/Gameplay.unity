@@ -323,6 +323,8 @@ GameObject:
   - component: {fileID: 711638572}
   - component: {fileID: 711638571}
   - component: {fileID: 711638573}
+  - component: {fileID: 711638574}
+  - component: {fileID: 711638575}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -344,6 +346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
+  - {fileID: 711638574}
+  - {fileID: 711638575}
   - {fileID: 711638573}
   _installerPrefabs: []
   _autoRun: 1
@@ -390,8 +394,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5454587e2607dc4fb4e3b267ca0361d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelGenerator: {fileID: 994245048}
   playerJoystick: {fileID: 2013170411}
+--- !u!114 &711638574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711638570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc30945bd9b41ad9af70038a55bb5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &711638575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711638570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67a022abaaa4fac91a9d18e4e66db68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelGenerator: {fileID: 994245048}
 --- !u!1 &811893532
 GameObject:
   m_ObjectHideFlags: 0

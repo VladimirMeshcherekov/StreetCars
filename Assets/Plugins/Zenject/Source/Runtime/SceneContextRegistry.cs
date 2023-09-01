@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using ModestTree;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Zenject
@@ -58,7 +59,6 @@ namespace Zenject
             {
                 return container;
             }
-
             throw Assert.CreateException(
                 "Unable to find DiContainer for scene '{0}'", scene.name);
         }

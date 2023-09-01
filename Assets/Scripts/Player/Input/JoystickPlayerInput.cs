@@ -1,23 +1,23 @@
-﻿using SimpleInputNamespace;
+﻿using Player.Interfaces;
+using SimpleInputNamespace;
 using UnityEngine;
-using Zenject;
 
 namespace Player.Input
 {
-    public class JoystickPlayerInput : ITickable
+    public class JoystickPlayerInput : IMovePlayerInput
     {
-        private EventBus _eventBus;
         private Joystick _joystick;
-        
-        public JoystickPlayerInput(EventBus eventBus, Joystick joystick)
+        private Vector2 _moveDirection;
+
+        public JoystickPlayerInput(Joystick joystick)
         {
-            _eventBus = eventBus;
             _joystick = joystick;
         }
 
-        public void Tick()
+
+        public Vector2 GetDirection()
         {
-             _eventBus.Invoke(new PlayerInputChangedSignal(_joystick.Value));
+            return _joystick.Value;
         }
     }
 }

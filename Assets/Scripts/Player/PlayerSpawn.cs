@@ -13,12 +13,11 @@ namespace Player
         [SerializeField] private CinemachineVirtualCamera followCamera;
 
         private PlayerMove _playerMove;
-        private EventBus _eventBus;
 
         [Inject]
-        private void Construct(EventBus eventBus)
+        private void Construct(PlayerMove playerMove)
         {
-            _eventBus = eventBus;
+            _playerMove = playerMove;
         }
 
         private void Start()
@@ -28,12 +27,8 @@ namespace Player
 
         private void SpawnPlayer()
         {
-            if (_eventBus == null)
-            {
-                print(123);
-            }
             var spawnedVehicle = Instantiate(vehicle, spawnPlayerPosition.position, Quaternion.Euler(0, 90, 0));
-            _playerMove = new PlayerMove(spawnedVehicle, _eventBus);
+            _playerMove.SetVehicle(spawnedVehicle);
             followCamera.Follow = spawnedVehicle.transform;
             followCamera.LookAt = spawnedVehicle.transform;
         }

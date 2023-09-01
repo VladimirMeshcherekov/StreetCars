@@ -1,23 +1,33 @@
+using Player.Interfaces;
 using UnityEngine;
 using VehicleBehaviour;
+using Zenject;
 
 namespace Player.Input
 {
-    public class PlayerMove
+    public class PlayerMove : ITickable
     {
-        private readonly WheelVehicle _vehicleControl;
+        private WheelVehicle _vehicleControl;
         private Vector2 _moveDirection;
+        private IMovePlayerInput _playerInput;
 
-        public PlayerMove(WheelVehicle vehicleControl, EventBus eventBus)
+        public PlayerMove(IMovePlayerInput playerInput)
         {
-            _vehicleControl = vehicleControl;
-            eventBus.Subscribe<PlayerInputChangedSignal>(PlayerDirectionChanged, 0);
+            _playerInput = playerInput;
         }
 
-        private void PlayerDirectionChanged(PlayerInputChangedSignal value)
+        public void SetVehicle(WheelVehicle vehicle)
         {
-            _vehicleControl.horizontalInput = value.Value.x;
-            _vehicleControl.verticalInput = value.Value.y;
+            _vehicleControl = vehicle;
+        }
+
+        public void Tick()
+        {
+            if (_vehicleControl != null)
+            {
+                _vehicleControl.horizontalInput = _playerInput.GetDirection().x;
+                _vehicleControl.verticalInput = _playerInput.GetDirection().y;
+            }
         }
     }
 }
