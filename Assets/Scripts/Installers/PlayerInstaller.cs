@@ -15,7 +15,7 @@ namespace Installers
 
         public override void InstallBindings()
         {
-            InstallStandaloneInput();
+         InstallMobileInput();
             _playerMove = new PlayerMove(_playerInput);
             Container.Bind<ITickable>().FromInstance(_playerMove).AsSingle().NonLazy();
             Container.Bind<PlayerMove>().FromInstance(_playerMove).AsSingle().NonLazy();

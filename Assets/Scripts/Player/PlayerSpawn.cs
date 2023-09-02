@@ -1,5 +1,6 @@
 using Cinemachine;
 using Player.Input;
+using Player.Pause.Interfaces;
 using UnityEngine;
 using VehicleBehaviour;
 using Zenject;
@@ -13,11 +14,13 @@ namespace Player
         [SerializeField] private CinemachineVirtualCamera followCamera;
 
         private PlayerMove _playerMove;
+        private IPauseHandler _pauseHandler;
 
         [Inject]
-        private void Construct(PlayerMove playerMove)
+        private void Construct(PlayerMove playerMove, IPauseHandler pauseHandler)
         {
             _playerMove = playerMove;
+            _pauseHandler = pauseHandler;
         }
 
         private void Start()
@@ -28,7 +31,7 @@ namespace Player
         private void SpawnPlayer()
         {
             var spawnedVehicle = Instantiate(vehicle, spawnPlayerPosition.position, Quaternion.Euler(0, 90, 0));
-            _playerMove.SetVehicle(spawnedVehicle);
+            _playerMove.Setup(spawnedVehicle, _pauseHandler);
             followCamera.Follow = spawnedVehicle.transform;
             followCamera.LookAt = spawnedVehicle.transform;
         }

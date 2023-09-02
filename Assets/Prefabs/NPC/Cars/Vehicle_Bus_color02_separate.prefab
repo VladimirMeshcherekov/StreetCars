@@ -430,6 +430,7 @@ GameObject:
   - component: {fileID: 400008}
   - component: {fileID: 7351413937217855989}
   - component: {fileID: 3550901721658489083}
+  - component: {fileID: 4752548293911179064}
   m_Layer: 0
   m_Name: Vehicle_Bus_color02_separate
   m_TagString: Untagged
@@ -481,3 +482,16 @@ MonoBehaviour:
   viewDistance: 10
   speed: 1
   showViewRay: 0
+--- !u!114 &4752548293911179064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 2
