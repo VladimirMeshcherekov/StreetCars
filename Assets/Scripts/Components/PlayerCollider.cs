@@ -2,7 +2,7 @@
 
 namespace Components
 {
-    public class Player : MonoBehaviour
+    public class PlayerCollider : MonoBehaviour
     {
     }
 }

@@ -4,6 +4,8 @@ using Player.Interfaces;
 using SimpleInputNamespace;
 using UnityEngine;
 using Zenject;
+using Player;
+
 
 namespace Installers
 {
@@ -12,9 +14,13 @@ namespace Installers
         [SerializeField] private Joystick playerJoystick;
         private PlayerMove _playerMove;
         private IMovePlayerInput _playerInput;
+        private PlayerSystem _player;
 
         public override void InstallBindings()
         {
+            _player = new PlayerSystem();
+            Container.BindInstance(_player).AsSingle().NonLazy();
+            
             InstallMobileInput();
             _playerMove = new PlayerMove(_playerInput);
             Container.Bind<ITickable>().FromInstance(_playerMove).AsSingle().NonLazy();

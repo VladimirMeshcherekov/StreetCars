@@ -30,7 +30,7 @@ namespace NPC.Car
                     out var hit, viewDistance))
             {
                 if (hit.collider.gameObject.TryGetComponent(out CarMove carMove) ||
-                    hit.collider.gameObject.TryGetComponent(out Components.Player player))
+                    hit.collider.gameObject.TryGetComponent(out Components.PlayerCollider player))
                 {
                     _isAbleToMove = false;
                 }

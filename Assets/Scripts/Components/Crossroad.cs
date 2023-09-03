@@ -42,7 +42,7 @@ namespace Components
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out Player player))
+            if (other.gameObject.TryGetComponent(out PlayerCollider player))
             {
                 _levelGenerator.GenerateNewRoadPart();
                 _levelGenerator.DeleteFirstRoadPart();

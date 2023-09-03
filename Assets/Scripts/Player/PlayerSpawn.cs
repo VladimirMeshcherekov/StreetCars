@@ -15,12 +15,14 @@ namespace Player
 
         private PlayerMove _playerMove;
         private IPauseHandler _pauseHandler;
+        private PlayerSystem _playerSystem;
 
         [Inject]
-        private void Construct(PlayerMove playerMove, IPauseHandler pauseHandler)
+        private void Construct(PlayerMove playerMove, IPauseHandler pauseHandler, PlayerSystem playerSystem, EventBus eventBus)
         {
             _playerMove = playerMove;
             _pauseHandler = pauseHandler;
+            playerSystem.SetupPlayer(eventBus, 1000);
         }
 
         private void Start()
