@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class PlayerInputChangedSignal
 {
     public readonly Vector2 Value;

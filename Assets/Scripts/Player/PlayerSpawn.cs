@@ -34,6 +34,7 @@ namespace Player
             _playerMove.Setup(spawnedVehicle, _pauseHandler);
             followCamera.Follow = spawnedVehicle.transform;
             followCamera.LookAt = spawnedVehicle.transform;
+            Time.timeScale = 1;
         }
     }
 }

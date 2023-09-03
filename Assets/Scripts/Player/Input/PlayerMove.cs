@@ -43,6 +43,15 @@ namespace Player.Input
         public void SetPaused(bool isPaused)
         {
             _isPaused = isPaused;
+            switch (isPaused)
+            {
+                case true:
+                    Time.timeScale = 0;
+                    break;
+                case false:
+                    Time.timeScale = 1;
+                    break;
+            }
         }
     }
 }

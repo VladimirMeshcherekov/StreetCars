@@ -22,10 +22,8 @@ namespace Player
         private void Start()
         {
             _currentPlayerHealth = maxPlayerHealth;
-            _eventBus.Invoke(new PlayerHealthChangedSignal( maxPlayerHealth, _currentPlayerHealth));
+            _eventBus.Invoke(new PlayerHealthChangedSignal(maxPlayerHealth, _currentPlayerHealth));
             _vehicle = GetComponent<WheelVehicle>();
-
-            
         }
 
         private void OnTriggerEnter(Collider other)
@@ -33,7 +31,12 @@ namespace Player
             if (other.gameObject.TryGetComponent(out IDamagePlayer npcCar))
             {
                 _currentPlayerHealth -= (int)_vehicle.Speed;
-                _eventBus.Invoke(new PlayerHealthChangedSignal( maxPlayerHealth, _currentPlayerHealth));
+                _eventBus.Invoke(new PlayerHealthChangedSignal(maxPlayerHealth, _currentPlayerHealth));
+                if (_currentPlayerHealth <= 0)
+                {
+                    _eventBus.Invoke(new PlayerDiedSignal());
+                    _eventBus.Invoke(new SetNewPauseStateSignal(true));
+                }
             }
         }
     }

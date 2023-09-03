@@ -66,7 +66,6 @@ namespace NPC.Car
         public void SetPaused(bool isPaused)
         {
             _isPaused = isPaused;
-           
         }
     }
 }

@@ -17,7 +17,7 @@ namespace UI
 
         private void ChangePlayerHealthUI(PlayerHealthChangedSignal signal)
         {
-            playerHealth.localScale = new Vector3((float)signal.CurrentHealth / (float)signal.MaxHealth, 1, 1);
+            playerHealth.localScale = new Vector3(Mathf.Clamp(((float)signal.CurrentHealth / (float)signal.MaxHealth),0, 1), 1, 1);
         }
 
     }
