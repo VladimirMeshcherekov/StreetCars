@@ -6,12 +6,19 @@
         private int _currentPlayerHealth;
         private EventBus _eventBus;
 
+        public PlayerInventory Inventory;
+
+        public PlayerSystem()
+        {
+            Inventory = new PlayerInventory();
+        }
         public void SetupPlayer(EventBus eventBus, int playerHealth)
         {
             _eventBus = eventBus;
             _playerHealth = playerHealth;
             _currentPlayerHealth = playerHealth;
             _eventBus.Invoke(new PlayerHealthChangedSignal(_playerHealth, _currentPlayerHealth));
+            
         }
         
         public void SetDamage(int damage)
