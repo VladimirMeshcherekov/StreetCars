@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using Player.Pause.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace UI
+namespace UI.Gameplay
 {
-    public class ShowGameOverPopup : MonoBehaviour
+    public class ShowPausePopup : MonoBehaviour, ICustomPauseBehavior
     {
         [SerializeField] private GameObject popupWindow;
         [SerializeField] private Image popupBackground;
@@ -14,14 +15,34 @@ namespace UI
 
         [SerializeField] private float showPopupTime;
         [SerializeField] private Color backgroundAlfa;
-
+        
         [Inject]
-        private void Construct(EventBus eventBus)
+        private void Construct(IPauseHandler pauseHandler)
         {
-            eventBus.Subscribe<PlayerDiedSignal>(PlayerDied, 0);
+            pauseHandler.AddPausedBehaviorObject(this);
         }
 
-        private void PlayerDied(PlayerDiedSignal signal)
+        public void SetPaused(bool isPaused)
+        {
+            switch (isPaused)
+            {
+                case true:
+                    ShowPopup();
+                    break;
+                case false:
+                    HidePopup();
+                    break;
+            }
+        }
+
+        private void HidePopup()
+        {
+            ShowOtherUIElements(true);
+            popupWindow.transform.DOScale(Vector3.zero, showPopupTime);
+            popupBackground.DOFade(0, showPopupTime);
+        }
+
+        private void ShowPopup()
         {
             ShowOtherUIElements(false);
             popupWindow.transform.DOScale(Vector3.one, showPopupTime);
