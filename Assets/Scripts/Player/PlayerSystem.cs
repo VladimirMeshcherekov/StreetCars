@@ -6,12 +6,6 @@
         private int _currentPlayerHealth;
         private EventBus _eventBus;
 
-        public PlayerInventory Inventory;
-
-        public PlayerSystem()
-        {
-            Inventory = new PlayerInventory();
-        }
         public void SetupPlayer(EventBus eventBus, int playerHealth)
         {
             _eventBus = eventBus;

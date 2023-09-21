@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cea170be27b5a3f4592606069cd3a037, type: 3}
-  m_Name: RaceCar 1
+  m_Script: {fileID: 11500000, guid: 3244e0b59a0db7f41aedb1f5b86666f3, type: 3}
+  m_Name: ShopItemList
   m_EditorClassIdentifier: 
-  ID: 1
-  name: Race Car
-  maxHealth: 200
-  maxSpeed: 60
-  description: Simple Race Car
-  previewSprite: {fileID: 0}
-  price: 100
+  carPropertiesList:
+  - {fileID: 11400000, guid: a8087f1db315dfe448b34bb1a4ef5b66, type: 2}
+  - {fileID: 11400000, guid: 8fa730165c19f6c459fed064c4f51f3a, type: 2}

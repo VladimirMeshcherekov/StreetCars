@@ -5,15 +5,8 @@ namespace Player
 {
     public class LoadInventory
     {
-        private PlayerInventory _inventory;
-
-        public LoadInventory(PlayerInventory inventory)
-        {
-            _inventory = inventory;
-            LoadFromFile();
-        }
-        
-        private void LoadFromFile()
+        private PlayerInventorySaveProperties _inventory;
+        public PlayerInventorySaveProperties LoadFromFile()
         {
             if (!File.Exists(SaveFilePath()))
             {
@@ -21,15 +14,14 @@ namespace Player
             }
 
             var json = File.ReadAllText(SaveFilePath());
-            JsonUtility.FromJsonOverwrite(json, _inventory);
+            return JsonUtility.FromJson<PlayerInventorySaveProperties>(json);
         }
         
-        private void SaveToFile(PlayerInventory inventory)
+        public void SaveToFile(PlayerInventorySaveProperties inventory)
         {
             var json = JsonUtility.ToJson(inventory);
             File.WriteAllText(SaveFilePath(), json);
         }
-        
         
         private string SaveFilePath()
         {

@@ -1,17 +1,20 @@
 ﻿using Player;
-using UnityEngine;
 using Zenject;
 
 namespace Installers
 {
     public class GlobalPlayerInstaller : MonoInstaller
     {
-        private PlayerSystem _playerSystem;
-
+       // private PlayerSystem _playerSystem;
+       private PlayerWallet _playerWallet;
         public override void InstallBindings()
         {
-            _playerSystem = new PlayerSystem();
-            Container.Bind<PlayerSystem>().FromInstance(_playerSystem).AsSingle().NonLazy();
+            _playerWallet = new PlayerWallet();
+            Container.Bind<PlayerWallet>().FromInstance(_playerWallet).AsSingle().NonLazy();
+            //_playerWallet.TryAddCoins(10);
+            //  _playerSystem = new PlayerSystem();
+            //  Container.Bind<PlayerSystem>().FromInstance(_playerSystem).AsSingle().NonLazy();
+
         }
     }
 }

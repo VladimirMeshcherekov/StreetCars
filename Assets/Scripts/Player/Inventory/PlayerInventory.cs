@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Player
 {
-    [Serializable]
     public class PlayerInventory
     {
         public List<int> _isOwnedItemsID;
@@ -11,12 +10,24 @@ namespace Player
         
         public PlayerInventory()
         {
-            _loadInventory = new LoadInventory(this);
+            _loadInventory = new LoadInventory();
+            _isOwnedItemsID = _loadInventory.LoadFromFile().IsOwnedItemsID;
             if (_isOwnedItemsID.Contains(0)== false)
             {
                 _isOwnedItemsID.Add(0);
             }
         }
         
+    }
+    
+    [Serializable]
+    public struct PlayerInventorySaveProperties
+    {
+        public List<int> IsOwnedItemsID;
+
+        public PlayerInventorySaveProperties(List<int> isOwnedItemsID)
+        {
+            IsOwnedItemsID = isOwnedItemsID;
+        }
     }
 }
