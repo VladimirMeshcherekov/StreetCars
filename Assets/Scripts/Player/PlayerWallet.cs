@@ -1,15 +1,19 @@
 using System;
+using Services;
+using UnityEngine;
 
 namespace Player
 {
     public class PlayerWallet 
     {
         public int Coins { get; private set; }
-        private WalletSaveSystem _walletSaveSystem;
+        private SaveService<PlayerWalletSaveProperties> _walletSaveSystem;
+        private string SaveFilePath { get; } = Application.persistentDataPath + "wallet.cars";
+
         public PlayerWallet()
         {
-            _walletSaveSystem = new WalletSaveSystem();
-            Coins = _walletSaveSystem.LoadFromFile().Coins;
+            _walletSaveSystem = new SaveService<PlayerWalletSaveProperties>(SaveFilePath);
+            Coins = _walletSaveSystem.LoadFromFile<PlayerWalletSaveProperties>().Coins;
         }
 
         public bool TryAddCoins(int value)
