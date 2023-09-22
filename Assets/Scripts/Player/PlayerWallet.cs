@@ -31,6 +31,7 @@ namespace Player
             }
 
             Coins -= price;
+            _walletSaveSystem.SaveToFile(new PlayerWalletSaveProperties(Coins));
             return true;
         }
     }

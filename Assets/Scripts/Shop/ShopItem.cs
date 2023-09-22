@@ -16,6 +16,8 @@ namespace Shop
         [SerializeField] private string textBeforeMaxHealth;
         [SerializeField] private string textBeforeMaxSpeed;
 
+        [SerializeField] private BuyItemButton buyItemButton;
+
         public void SetItem(CarProperties properties, bool showUseButton)
         {
             properties = Instantiate(properties);
@@ -25,6 +27,14 @@ namespace Shop
             
             buyButton.gameObject.SetActive(!showUseButton);
             useButton.gameObject.SetActive(showUseButton);
+            
+            buyItemButton.SetItemID(properties.ID, properties.price);
+        }
+
+        public void ReloadItemButtons(bool showUseButton)
+        {
+            buyButton.gameObject.SetActive(!showUseButton);
+            useButton.gameObject.SetActive(showUseButton);  
         }
     }
 }

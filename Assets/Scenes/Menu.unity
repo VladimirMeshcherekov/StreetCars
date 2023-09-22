@@ -1736,7 +1736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPropertiesList: {fileID: 11400000, guid: 6753b26607b7cc1449c0e5143d349b0e, type: 2}
-  shopItem: {fileID: 575263827578654611, guid: eba28a99a765fb849a3aa548ccfe092e, type: 3}
+  shopItem: {fileID: 3881755035748509776, guid: 6fd0fe92ed258804c9968deb18ce5231, type: 3}
   shopContentList: {fileID: 625742474}
 --- !u!1 &1982784111
 GameObject:

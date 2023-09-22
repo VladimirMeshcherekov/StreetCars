@@ -11,7 +11,7 @@ namespace Installers
         {
             _playerWallet = new PlayerWallet();
             Container.Bind<PlayerWallet>().FromInstance(_playerWallet).AsSingle().NonLazy();
-            //_playerWallet.TryAddCoins(10);
+            _playerWallet.TryAddCoins(100);
             //  _playerSystem = new PlayerSystem();
             //  Container.Bind<PlayerSystem>().FromInstance(_playerSystem).AsSingle().NonLazy();
 
