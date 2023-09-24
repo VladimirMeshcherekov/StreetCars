@@ -29,11 +29,6 @@ namespace Player
 
         private void Start()
         {
-            if (_playerSetup == null)
-            {
-                print(312);
-            }
-            
             SpawnPlayer();
         }
 
