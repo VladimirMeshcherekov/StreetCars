@@ -14,6 +14,7 @@ namespace Installers
         [SerializeField] private Joystick playerJoystick;
         private PlayerMove _playerMove;
         private IMovePlayerInput _playerInput;
+        private PlayerHealth _playerHealth;
      //   private PlayerSystem _player;
 
         public override void InstallBindings()
@@ -23,8 +24,10 @@ namespace Installers
             
             InstallMobileInput();
             _playerMove = new PlayerMove(_playerInput);
+            _playerHealth = new PlayerHealth();
             Container.Bind<ITickable>().FromInstance(_playerMove).AsSingle().NonLazy();
             Container.Bind<PlayerMove>().FromInstance(_playerMove).AsSingle().NonLazy();
+            Container.Bind<PlayerHealth>().FromInstance(_playerHealth).AsSingle().NonLazy();
         }
 
         private void InstallStandaloneInput()

@@ -1,6 +1,6 @@
 ﻿namespace Player
 {
-    public class PlayerSystem
+    public class PlayerHealth
     {
         private int _playerHealth;
         private int _currentPlayerHealth;

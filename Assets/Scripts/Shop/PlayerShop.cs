@@ -62,7 +62,7 @@ namespace Shop
         {
             _itemsByID[_currentSelectedItemID].ReloadItemButtons(ShopItemState.AbleToSelect);
             _itemsByID[signal.CarProperties.ID].ReloadItemButtons(ShopItemState.Selected); 
-            _playerSetup.SetPlayer(carPropertiesList.FindCarByID(signal.CarProperties.ID).carPrefab);
+            _playerSetup.SetPlayer(carPropertiesList.FindCarByID(signal.CarProperties.ID));
             _currentSelectedItemID = signal.CarProperties.ID;
             SavePlayerShopProperties();
         }

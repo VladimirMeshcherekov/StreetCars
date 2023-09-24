@@ -6,7 +6,6 @@ namespace Installers
 {
     public class GlobalPlayerInstaller : MonoInstaller
     {
-        // private PlayerSystem _playerSystem;
         private PlayerWallet _playerWallet;
         [SerializeField] private PlayerSetup playerSetup;
 

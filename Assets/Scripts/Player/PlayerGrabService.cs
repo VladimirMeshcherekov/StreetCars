@@ -9,12 +9,12 @@ namespace Player
     public class PlayerGrabService : MonoBehaviour
     {
         private WheelVehicle _vehicle;
-        private PlayerSystem _playerSystem;
+        private PlayerHealth _playerHealth;
 
         [Inject]
-        private void Construct(PlayerSystem playerSystem)
-        {
-            _playerSystem = playerSystem;
+        private void Construct(PlayerHealth playerHealth)
+        { 
+            _playerHealth = playerHealth;
         }
 
         private void Start()
@@ -24,9 +24,9 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out IDamagePlayer npcCar))
+            if (other.gameObject.TryGetComponent(out IDamagePlayer damageableObject))
             {
-                _playerSystem.SetDamage((int)_vehicle.Speed);
+                _playerHealth.SetDamage((int)_vehicle.Speed);
             }
         }
     }

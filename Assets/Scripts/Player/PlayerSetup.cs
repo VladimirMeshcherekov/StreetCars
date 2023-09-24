@@ -4,16 +4,16 @@ using Zenject;
 
 public class PlayerSetup : MonoBehaviour
 {
-    [SerializeField] private WheelVehicle defaultPlayer;
-    private WheelVehicle _currentPlayer;
+    [SerializeField] private CarProperties defaultPlayer;
+    private CarProperties _currentPlayer;
     
-    public void SetPlayer(WheelVehicle newPlayer)
+    public void SetPlayer(CarProperties newPlayer)
     {
         print(123);
         _currentPlayer = newPlayer;
     }
 
-    public WheelVehicle GetPlayer()
+    public CarProperties GetPlayer()
     {
         if (_currentPlayer == null)
         {
