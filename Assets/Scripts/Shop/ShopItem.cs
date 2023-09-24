@@ -17,7 +17,8 @@ namespace Shop
         [SerializeField] private string textBeforeMaxSpeed;
 
         [SerializeField] private BuyItemButton buyItemButton;
-
+        [SerializeField] private SetPlayerButton setPlayerButton;
+       
         public void SetItem(CarProperties properties, bool showUseButton)
         {
             properties = Instantiate(properties);
@@ -29,12 +30,26 @@ namespace Shop
             useButton.gameObject.SetActive(showUseButton);
             
             buyItemButton.SetItemID(properties.ID, properties.price);
+            setPlayerButton.thisButtonCarProperties = properties;
         }
 
-        public void ReloadItemButtons(bool showUseButton)
+        public void ReloadItemButtons(ShopItemState itemState)
         {
-            buyButton.gameObject.SetActive(!showUseButton);
-            useButton.gameObject.SetActive(showUseButton);  
+            switch (itemState)
+            {
+                case ShopItemState.AbleToBuy:
+                    buyButton.gameObject.SetActive(true);
+                    useButton.gameObject.SetActive(false); 
+                    break;
+                case ShopItemState.AbleToSelect:
+                    buyButton.gameObject.SetActive(false);
+                    useButton.gameObject.SetActive(true);
+                    break;
+                case ShopItemState.Selected:
+                    buyButton.gameObject.SetActive(false);
+                    useButton.gameObject.SetActive(false);
+                    break;
+            }
         }
     }
 }

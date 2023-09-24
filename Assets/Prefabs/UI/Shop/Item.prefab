@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 3881755034242016953}
   - component: {fileID: 3881755034242016952}
   - component: {fileID: 3881755034242016955}
+  - component: {fileID: 791717376304201463}
   m_Layer: 5
   m_Name: Use Button
   m_TagString: Untagged
@@ -258,7 +259,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3881755034242016952}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 791717376304201463}
+        m_TargetAssemblyTypeName: SetPlayerButton, Assembly-CSharp
+        m_MethodName: SetPlayerThrowUIButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &791717376304201463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881755034242016957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1547e3640c671a946b2a2a9e8207e191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisButtonCarProperties: {fileID: 0}
 --- !u!1 &3881755034297068086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1355,7 @@ GameObject:
   - component: {fileID: 3881755035748509779}
   - component: {fileID: 3881755035748509778}
   - component: {fileID: 3881755035748509776}
-  - component: {fileID: 880729463649931416}
+  - component: {fileID: -3662286861731012968}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -1420,7 +1446,8 @@ MonoBehaviour:
   textBeforeMaxHealth: 'Health: '
   textBeforeMaxSpeed: 'Speed: '
   buyItemButton: {fileID: 5597892812324110361}
---- !u!114 &880729463649931416
+  setPlayerButton: {fileID: 791717376304201463}
+--- !u!114 &-3662286861731012968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

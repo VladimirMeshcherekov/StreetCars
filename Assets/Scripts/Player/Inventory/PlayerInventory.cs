@@ -7,33 +7,33 @@ namespace Player
 {
     public class PlayerInventory
     {
-        public List<int> _isOwnedItemsID { get; private set; }
+        public List<int> IsOwnedItemsID { get; private set; }
         private SaveService<PlayerInventorySaveProperties> _loadInventorySystem;
         private string SaveFilePath { get; } = Application.persistentDataPath + "inventory.cars";
 
         public PlayerInventory()
         {
             _loadInventorySystem = new SaveService<PlayerInventorySaveProperties>(SaveFilePath);
-            _isOwnedItemsID = _loadInventorySystem.LoadFromFile<PlayerInventorySaveProperties>().IsOwnedItemsID;
+            IsOwnedItemsID = _loadInventorySystem.LoadFromFile<PlayerInventorySaveProperties>().IsOwnedItemsID;
 
-            ResetInventory(); // debug only
-            
-            if (_isOwnedItemsID.Contains(0) == false)
+           // ResetInventory(); // debug only
+
+            if (IsOwnedItemsID.Contains(0) == false)
             {
-                _isOwnedItemsID.Add(0);
+                IsOwnedItemsID.Add(0);
             }
         }
 
         public void AddNewItemToInventory(int newItemID)
         {
-            _isOwnedItemsID.Add(newItemID);
-            _loadInventorySystem.SaveToFile(new PlayerInventorySaveProperties(_isOwnedItemsID));
+            IsOwnedItemsID.Add(newItemID);
+            _loadInventorySystem.SaveToFile(new PlayerInventorySaveProperties(IsOwnedItemsID));
         }
 
         void ResetInventory()
         {
-            _isOwnedItemsID = new List<int>(); 
-            _loadInventorySystem.SaveToFile(new PlayerInventorySaveProperties(_isOwnedItemsID));
+            IsOwnedItemsID = new List<int>();
+            _loadInventorySystem.SaveToFile(new PlayerInventorySaveProperties(IsOwnedItemsID));
         }
     }
 
