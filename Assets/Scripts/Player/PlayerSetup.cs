@@ -1,26 +1,26 @@
 using UnityEngine;
-using VehicleBehaviour;
-using Zenject;
 
-public class PlayerSetup : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private CarProperties defaultPlayer;
-    private CarProperties _currentPlayer;
+    public class PlayerSetup : MonoBehaviour
+    {
+        [SerializeField] private CarProperties defaultPlayer;
+        private CarProperties _currentPlayer;
     
-    public void SetPlayer(CarProperties newPlayer)
-    {
-        print(123);
-        _currentPlayer = newPlayer;
-    }
-
-    public CarProperties GetPlayer()
-    {
-        if (_currentPlayer == null)
+        public void SetPlayer(CarProperties newPlayer)
         {
-            return defaultPlayer;
+            _currentPlayer = newPlayer;
         }
 
-        return _currentPlayer;
-    }
+        public CarProperties GetPlayer()
+        {
+            if (_currentPlayer == null)
+            {
+                return defaultPlayer;
+            }
+
+            return _currentPlayer;
+        }
     
+    }
 }
