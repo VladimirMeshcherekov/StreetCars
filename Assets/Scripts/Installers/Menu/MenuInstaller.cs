@@ -1,4 +1,5 @@
 using Player;
+using Player.Inventory;
 using Zenject;
 
 namespace Installers.Menu

@@ -3,48 +3,48 @@ using System.Collections.Generic;
 using Services;
 using UnityEngine;
 
-namespace Player
+namespace Player.Inventory
 {
     public class PlayerInventory
     {
-        public List<int> IsOwnedItemsID { get; private set; }
+        public List<PlayerCarsTypes> OwnedItemsTypes { get; private set; }
         private SaveService<PlayerInventorySaveProperties> _loadInventorySystem;
         private string SaveFilePath { get; } = Application.persistentDataPath + "inventory.cars";
 
         public PlayerInventory()
         {
             _loadInventorySystem = new SaveService<PlayerInventorySaveProperties>(SaveFilePath);
-            IsOwnedItemsID = _loadInventorySystem.LoadFromFile<PlayerInventorySaveProperties>().IsOwnedItemsID;
+            OwnedItemsTypes = _loadInventorySystem.LoadFromFile<PlayerInventorySaveProperties>().IsOwnedItemsTypes;
 
-           // ResetInventory(); // debug only
+           //ResetInventory(); // debug only
 
-            if (IsOwnedItemsID.Contains(0) == false)
+            if (OwnedItemsTypes.Contains(PlayerCarsTypes.Default) == false)
             {
-                IsOwnedItemsID.Add(0);
+                OwnedItemsTypes.Add(PlayerCarsTypes.Default);
             }
         }
 
-        public void AddNewItemToInventory(int newItemID)
+        public void AddNewItemToInventory(PlayerCarsTypes newItemType)
         {
-            IsOwnedItemsID.Add(newItemID);
-            _loadInventorySystem.SaveToFile(new PlayerInventorySaveProperties(IsOwnedItemsID));
+            OwnedItemsTypes.Add(newItemType);
+            _loadInventorySystem.SaveToFile(new PlayerInventorySaveProperties(OwnedItemsTypes));
         }
 
         void ResetInventory()
         {
-            IsOwnedItemsID = new List<int>();
-            _loadInventorySystem.SaveToFile(new PlayerInventorySaveProperties(IsOwnedItemsID));
+            OwnedItemsTypes = new List<PlayerCarsTypes>();
+            _loadInventorySystem.SaveToFile(new PlayerInventorySaveProperties(OwnedItemsTypes));
         }
     }
 
     [Serializable]
     public struct PlayerInventorySaveProperties
     {
-        public List<int> IsOwnedItemsID;
+        public List<PlayerCarsTypes> IsOwnedItemsTypes;
 
-        public PlayerInventorySaveProperties(List<int> isOwnedItemsID)
+        public PlayerInventorySaveProperties(List<PlayerCarsTypes> isOwnedItemsTypes)
         {
-            IsOwnedItemsID = isOwnedItemsID;
+            IsOwnedItemsTypes = isOwnedItemsTypes;
         }
     }
 }

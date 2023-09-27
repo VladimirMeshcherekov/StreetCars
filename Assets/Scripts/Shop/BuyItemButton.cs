@@ -1,4 +1,5 @@
 using Player;
+using Player.Inventory;
 using UnityEngine;
 using Zenject;
 
@@ -6,7 +7,7 @@ namespace Shop
 {
     public class BuyItemButton : MonoBehaviour
     {
-        private int _itemID;
+        private PlayerCarsTypes _itemType;
         private int _price;
 
         private PlayerWallet _playerWallet;
@@ -21,17 +22,17 @@ namespace Shop
             _eventBus = eventBus;
         }
 
-        public void SetItemID(int itemID, int price)
+        public void SetItemID(PlayerCarsTypes itemType, int price)
         {
-            _itemID = itemID;
+            _itemType = itemType;
             _price = price;
         }
         public void TryBuyItem()
         {
             if (_playerWallet.TryToSpendCoins(_price))
             {
-                _playerInventory.AddNewItemToInventory(_itemID);
-                _eventBus.Invoke(new AddNewItemToInventorySignal(_itemID));
+                _playerInventory.AddNewItemToInventory(_itemType);
+                _eventBus.Invoke(new AddNewItemToInventorySignal(_itemType));
                 _eventBus.Invoke(new PlayerWalletValueChangedSignal());
             }
         }

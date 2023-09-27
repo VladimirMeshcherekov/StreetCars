@@ -19,18 +19,16 @@ namespace Shop
         [SerializeField] private BuyItemButton buyItemButton;
         [SerializeField] private SetPlayerButton setPlayerButton;
        
-        public void SetItem(CarProperties properties, bool showUseButton)
+        public void SetItem(CarProperties properties, ShopItemState state)
         {
             properties = Instantiate(properties);
             nameText.text = properties.name;
             maxHealthText.text = textBeforeMaxHealth + properties.maxHealth.ToString();
             maxSpeedText.text = textBeforeMaxSpeed + properties.maxSpeed.ToString();
-            
-            buyButton.gameObject.SetActive(!showUseButton);
-            useButton.gameObject.SetActive(showUseButton);
-            
-            buyItemButton.SetItemID(properties.ID, properties.price);
+
+            buyItemButton.SetItemID(properties.type, properties.price);
             setPlayerButton.thisButtonCarProperties = properties;
+            ReloadItemButtons(state);
         }
 
         public void ReloadItemButtons(ShopItemState itemState)

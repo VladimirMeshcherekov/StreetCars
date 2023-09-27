@@ -8,13 +8,13 @@ public class ShopItemList : ScriptableObject
 {
     public List<CarProperties> carPropertiesList;
     
-    public CarProperties FindCarByID(int ID)
+    public CarProperties FindCarByType(PlayerCarsTypes type)
     {
-        foreach (var car in carPropertiesList.Where(car => car.ID == ID))
+        foreach (var car in carPropertiesList.Where(car => car.type == type))
         {
             return car;
         }
 
-        throw new Exception("unable to find car with id " + ID);
+        throw new Exception("unable to find car with type:  " + type);
     }
 }

@@ -1,8 +1,8 @@
 ﻿internal class AddNewItemToInventorySignal
 {
-    public readonly int NewItemID;
-    public AddNewItemToInventorySignal(int newItemID)
+    public readonly PlayerCarsTypes NewCarType;
+    public AddNewItemToInventorySignal(PlayerCarsTypes newCarType)
     {
-        NewItemID = newItemID;
+        NewCarType = newCarType;
     }
 }

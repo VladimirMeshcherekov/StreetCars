@@ -4,7 +4,7 @@ using VehicleBehaviour;
 [CreateAssetMenu(fileName = "Car Properties", menuName = "ScriptableObjects/Cars", order = 1)]
 public class CarProperties : ScriptableObject
 {
-  public int ID;
+  public PlayerCarsTypes type;
   public string name;
   public int maxHealth;
   public int maxSpeed;

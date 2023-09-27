@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea170be27b5a3f4592606069cd3a037, type: 3}
   m_Name: RaceCar
   m_EditorClassIdentifier: 
-  ID: 0
+  type: 1
   name: Race Car
   maxHealth: 100
   maxSpeed: 60
