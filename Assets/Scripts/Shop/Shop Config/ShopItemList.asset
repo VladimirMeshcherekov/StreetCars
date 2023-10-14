@@ -15,3 +15,4 @@ MonoBehaviour:
   carPropertiesList:
   - {fileID: 11400000, guid: a8087f1db315dfe448b34bb1a4ef5b66, type: 2}
   - {fileID: 11400000, guid: 8fa730165c19f6c459fed064c4f51f3a, type: 2}
+  - {fileID: 11400000, guid: c22dbd5e9e426154189660978be6eff0, type: 2}
